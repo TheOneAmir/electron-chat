@@ -1,17 +1,15 @@
 const { app, BrowserWindow } = require( "electron" ), 
       path = require( "path" ), 
-      url = require( "url" ); 
-const { default: installExtension, REACT_DEVELOPER_TOOLS } = require( "electron-devtools-installer" );
+      url = require( "url" );
 
 let mainWindow; 
 
 function createWindow() { 
-   installExtension(REACT_DEVELOPER_TOOLS)
-      .then((name) => console.log(`Added Extension: ${name}`))
-     .catch((err) => console.log("An error occurred: ", err));
-	
   mainWindow = new BrowserWindow({ 
-    width: 1000, height: 600 
+    width: 1000, height: 600, frame: false,
+    icon: path.join(
+      __dirname, "icon-64x64.png"
+    )
   }); 
 
   mainWindow.loadURL( url.format({ 
@@ -39,4 +37,3 @@ app.on( "activate", () => {
     createWindow(); 
   } 
 }); 
-require( "electron-debug" )(); 
