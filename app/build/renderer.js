@@ -6500,7 +6500,7 @@ module.exports = getActiveElement;
 /* 57 */
 /***/ (function(module, exports) {
 
-module.exports = "./build/2614e058b2dcb9d6e2e964730d795540.eot";
+module.exports = "./build/photon-entypo.eot";
 
 /***/ }),
 /* 58 */
@@ -11043,13 +11043,12 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       this.client.join(userName);
     };
 
-    this.client = new __WEBPACK_IMPORTED_MODULE_6__Service_Client__["a" /* default */]();
-    this.server = new __WEBPACK_IMPORTED_MODULE_5__Service_Server__["a" /* default */]();
-    this.server.connect(HOST, PORT, this.client);
-
     this.state = {
       name: ""
     };
+    this.client = new __WEBPACK_IMPORTED_MODULE_6__Service_Client__["a" /* default */]();
+    this.server = new __WEBPACK_IMPORTED_MODULE_5__Service_Server__["a" /* default */]();
+    this.server.connect(HOST, PORT, this.client);
   }
 
   render() {
@@ -11149,6 +11148,11 @@ class Conversation extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
   constructor(props) {
     super(props);
 
+    this.onSubmit = e => {
+      e.preventDefault();
+      this.submit();
+    };
+
     this.onClientText = msg => {
       msg.time = new Date(msg.dateTime);
       this.messages.unshift(msg);
@@ -11162,6 +11166,11 @@ class Conversation extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
       messages: []
     };
     props.client.on("msg", this.onClientText);
+  }
+
+  submit() {
+    this.props.client.message(this.inputEl.value);
+    this.inputEl.value = "";
   }
 
   static normalizeTime(date, now, locale) {
@@ -11362,12 +11371,13 @@ class Participants extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compone
     };
 
     this.state = {
-      participants: props.client.getParticipants()
+      participants: []
     };
     props.client.on("participants", this.onClientParticipants);
   }
 
   render() {
+    const { participants } = this.state;
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       "div",
       { className: "pane pane-sm sidebar" },
@@ -11428,6 +11438,19 @@ class Welcome extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       this.props.onNameChange(this.nameEl.value || "Jon");
     }, _temp;
   }
+  /**
+   * Handle when form is submitted
+   * @param {Event} e
+   */
+
+  /**
+   * Set default properties (React.Component API)
+   */
+
+  /**
+   * Validate properties (React.Component API)
+   */
+
 
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -11465,8 +11488,7 @@ class Welcome extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony export (immutable) */ __webpack_exports__["a"] = Welcome;
 
 Welcome.defaultProps = {
-  onNameChange: () => {}
-};
+  onNameChange: () => {} };
 Welcome.propTypes = {
   onNameChange: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired
 };
@@ -11485,7 +11507,7 @@ const EventEmitter = __webpack_require__(52),
 class Client extends EventEmitter {
     connect(host, port) {
         return new Promise((resolve, reject) => {
-            this.socket = new WebSocket(`ws:${host}:${port}`);
+            this.socket = new WebSocket(`ws://${host}:${port}`);
 
             this.socket.addEventListener("open", () => {
                 resolve();
@@ -13405,13 +13427,13 @@ module.exports = performanceNow;
 /* 123 */
 /***/ (function(module, exports) {
 
-module.exports = "./build/1382c29cdb72f6c99043675d6e13b625.ttf";
+module.exports = "./build/photon-entypo.ttf";
 
 /***/ }),
 /* 124 */
 /***/ (function(module, exports) {
 
-module.exports = "./build/bf614256dbc49f4bf2cf786706bb0712.woff";
+module.exports = "./build/photon-entypo.woff";
 
 /***/ }),
 /* 125 */
@@ -24607,7 +24629,7 @@ module.exports = function (css) {
 /* 218 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"chat","version":"1.0.0","description":"Chat","main":"./app/main.js","scripts":{"start":"electron .","dev":"webpack -d --watch","build":"webpack","pack":"build --dir","dist":"build"},"author":"","license":"ISC","engines":{"node":">=6.0.0"},"build":{"appId":"com.example.chat","publish":[{"provider":"generic","url":"http://127.0.0.1:8080/"}]},"dependencies":{"nodejs-websocket":"^1.7.1","photonkit":"^0.1.2","prop-types":"^15.5.6","react":"^15.4.2","react-dom":"^15.4.2","react-timeago":"^3.1.3"},"devDependencies":{"electron-builder":"^17.1.2","babel-cli":"^6.23.0","babel-core":"^6.22.1","babel-loader":"^6.2.10","babel-plugin-transform-class-properties":"^6.23.0","babel-plugin-transform-object-rest-spread":"^6.23.0","babel-preset-es2017":"^6.22.0","babel-preset-react":"^6.22.0","css-loader":"^0.28.0","devtron":"^1.4.0","electron":"^1.6.2","electron-debug":"^1.1.0","file-loader":"^0.11.1","style-loader":"^0.16.1","url-loader":"^0.5.8","webpack":"^2.3.3"}}
+module.exports = {"name":"chat","version":"1.0.0","description":"Chat","main":"./app/main.js","scripts":{"start":"electron .","dev":"webpack -d --watch","build":"webpack","pack":"build --dir","dist":"build"},"author":"","license":"ISC","engines":{"node":">=6.0.0"},"build":{"appId":"com.example.chat"},"dependencies":{"nodejs-websocket":"^1.7.1","photonkit":"^0.1.2","prop-types":"^15.5.6","react":"^15.4.2","react-dom":"^15.4.2","react-timeago":"^3.1.3"},"devDependencies":{"electron-builder":"^17.1.2","babel-cli":"^6.23.0","babel-core":"^6.22.1","babel-loader":"^6.2.10","babel-plugin-transform-class-properties":"^6.23.0","babel-plugin-transform-object-rest-spread":"^6.23.0","babel-preset-es2017":"^6.22.0","babel-preset-react":"^6.22.0","css-loader":"^0.28.0","devtron":"^1.4.0","electron":"^1.6.2","electron-debug":"^1.1.0","file-loader":"^0.11.1","style-loader":"^0.16.1","url-loader":"^0.5.8","webpack":"^2.3.3"}}
 
 /***/ }),
 /* 219 */
@@ -24629,3 +24651,4 @@ module.exports = require("url");
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=renderer.js.map

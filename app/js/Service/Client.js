@@ -7,7 +7,7 @@ export default class
 Client extends EventEmitter {
     connect(host, port){
         return new Promise((resolve, reject) => {
-            this.socket = new WebSocket( `ws:${host}:${port}` );
+            this.socket = new WebSocket( `ws://${host}:${port}` );
 
             this.socket.addEventListener( "open", () => {
                 resolve();

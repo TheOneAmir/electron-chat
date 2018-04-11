@@ -19,6 +19,16 @@ export default class Conversation extends React.Component {
     client: PropTypes.object.isRequired
   }
 
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.submit()
+  }
+
+  submit(){
+    this.props.client.message(this.inputEl.value);
+    this.inputEl.value = "";
+  }
+
   onClientText = (msg) => {
     msg.time = new Date(msg.dateTime);
     this.messages.unshift(msg);

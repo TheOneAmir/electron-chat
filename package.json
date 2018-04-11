@@ -16,13 +16,7 @@
     "node": ">=6.0.0"
   },
   "build": {
-    "appId": "com.example.chat",
-    "publish": [
-      {
-        "provider": "generic",
-        "url": "http://127.0.0.1:8080/"
-      }
-    ]
+    "appId": "com.example.chat"
   },
   "dependencies": {
     "nodejs-websocket": "^1.7.1",

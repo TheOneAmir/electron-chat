@@ -13,13 +13,12 @@ export default class
 App extends React.Component {
   constructor(){
     super();
-    this.client = new Client();
-    this.server = new Server();
-    this.server.connect( HOST, PORT, this.client );
-
     this.state = {
       name: ""
     };
+    this.client = new Client();
+    this.server = new Server();
+    this.server.connect( HOST, PORT, this.client );
   }
 
   onNameChange = (userName) => {

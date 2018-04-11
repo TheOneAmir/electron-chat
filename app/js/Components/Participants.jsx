@@ -6,7 +6,7 @@ export default class Participants extends React.Component {
   constructor( props ){
     super(props);
     this.state = {
-      participants: props.client.getParticipants()
+      participants: []
     }
     props.client.on( "participants", this.onClientParticipants );
   }
@@ -26,19 +26,21 @@ export default class Participants extends React.Component {
   }
 
   render(){
+    const { participants } = this.state;
     return (
       <div className="pane pane-sm sidebar">
         <ul className="list-group">
-        {this.state.participants.map((user) => (
-          <li className="list-group-item">
-              <div className="media-body">
-                <strong><span className="icon icon-user"></span>
-                {user.name}
-                </strong>
-                <p>Joined <TimeAgo date={user.time} /></p>
-              </div>
-            </li>
-        ))}
+          {this.state.participants.map((user) => (
+            <li className="list-group-item">
+                <div className="media-body">
+                  <strong>
+                    <span className="icon icon-user"></span>
+                  {user.name}
+                  </strong>
+                  <p>Joined <TimeAgo date={user.time} /></p>
+                </div>
+              </li>
+          ))}
         </ul>
       </div>
     );
